@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أنفاش ن آت يسجن 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Tajawal',sans-serif; background:#f5f5f2; min-height:100vh; color:#1a1a1a; }
+
+/* Header */
+.site-header {
+  background: linear-gradient(135deg, #1b5e3b, #2e7d52);
+  padding: 20px 20px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.site-header h1 { font-size: 24px; font-weight: 900; color: #fff; position: relative; }
+.site-header p { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 4px; position: relative; }
+.header-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 14px; border-radius: 999px;
+  margin-bottom: 12px;
+  position: relative;
+  letter-spacing: 0.08em;
+}
+
+/* Progress */
+.progress-wrap { background: #fff; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.progress { display: flex; align-items: center; justify-content: center; direction: ltr; }
+.p-dot {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 2px solid #ddd; background: #fff;
+  color: #bbb; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.p-dot.active { background: #2e7d52; border-color: #2e7d52; color: #fff; box-shadow: 0 0 0 3px rgba(46,125,82,0.2); }
+.p-dot.done { background: #a8d5b5; border-color: #a8d5b5; color: #fff; }
+.p-line { width: 24px; height: 2px; background: #eee; transition: background 0.3s; }
+.p-line.done { background: #a8d5b5; }
+.step-labels { display: flex; justify-content: space-between; margin-top: 8px; padding: 0 2px; }
+.step-label { font-size: 9px; color: #bbb; text-align: center; width: 30px; line-height: 1.3; }
+.step-label.active { color: #2e7d52; font-weight: 700; }
+
+/* Container */
+.container { max-width: 480px; margin: 0 auto; padding: 20px 14px 60px; }
+
+/* Card */
+.card { background: #fff; border-radius: 12px; padding: 24px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 12px; }
+.card-header { margin-bottom: 22px; }
+.card-step { font-size: 11px; font-weight: 700; color: #2e7d52; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+.card-title { font-size: 19px; font-weight: 800; color: #1a1a1a; }
+.card-desc { font-size: 13px; color: #888; margin-top: 4px; line-height: 1.6; }
+
+/* Fields */
+.field { margin-bottom: 20px; }
+.field:last-of-type { margin-bottom: 0; }
+.field-label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; display: block; line-height: 1.5; }
+.req { color: #e63946; }
+
+select, input[type="text"], textarea {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid #e8e8e8; border-radius: 8px;
+  font-family: 'Tajawal', sans-serif; font-size: 14px; color: #333;
+  background: #fafafa; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s; direction: rtl;
+}
+select { appearance: none; -webkit-appearance: none; cursor: pointer; color: #999; }
+select option { color: #333; }
+select:focus, input:focus, textarea:focus {
+  border-color: #2e7d52; box-shadow: 0 0 0 3px rgba(46,125,82,0.1); background: #fff;
+}
+textarea { resize: vertical; min-height: 85px; line-height: 1.7; color: #333; }
+input::placeholder, textarea::placeholder { color: #ccc; font-size: 13px; }
+.multi-input { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+
+/* Radio */
+.radio-group { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.radio-opt { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 10px 12px; border: 1.5px solid #eee; border-radius: 8px; transition: all 0.15s; }
+.radio-opt:hover { border-color: #2e7d52; background: #f0faf4; }
+.radio-opt input { display: none; }
+.r-circle { width: 18px; height: 18px; min-width: 18px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.radio-opt input:checked ~ .r-circle { border-color: #2e7d52; }
+.radio-opt input:checked ~ .r-circle::after { content: ''; width: 8px; height: 8px; background: #2e7d52; border-radius: 50%; }
+.radio-opt input:checked ~ span { color: #1b5e3b; font-weight: 600; }
+.radio-opt span { font-size: 14px; color: #444; }
+
+/* Checkbox */
+.check-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.check-opt { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 9px 12px; border: 1.5px solid #eee; border-radius: 8px; transition: all 0.15s; }
+.check-opt:hover { border-color: #2e7d52; background: #f0faf4; }
+.check-opt input { display: none; }
+.c-box { width: 18px; height: 18px; min-width: 18px; border: 2px solid #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+.check-opt input:checked + .c-box { background: #2e7d52; border-color: #2e7d52; }
+.check-opt input:checked + .c-box::after { content: '✓'; font-size: 11px; color: #fff; font-weight: 700; }
+.check-opt span { font-size: 14px; color: #444; }
+
+/* Stars rating */
+.stars-wrap { display: flex; flex-direction: column; gap: 14px; margin-top: 6px; }
+.star-row { }
+.star-question { font-size: 13px; color: #555; margin-bottom: 6px; }
+.stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; }
+.stars input { display: none; }
+.stars label { font-size: 26px; color: #ddd; cursor: pointer; transition: color 0.15s; line-height: 1; }
+.stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: #f4a435; }
+
+/* Cells grid */
+.section-divider { font-size: 12px; font-weight: 700; color: #2e7d52; letter-spacing: 0.08em; text-transform: uppercase; margin: 16px 0 8px; padding-bottom: 6px; border-bottom: 1px solid #e8e8e8; }
+.cells-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+.cell-radio { display: none; }
+.cell-card {
+  padding: 10px 10px; border: 1.5px solid #e8e8e8; border-radius: 8px;
+  font-size: 12px; font-weight: 500; color: #555; cursor: pointer;
+  transition: all 0.15s; background: #fafafa; text-align: center; line-height: 1.5; display: block;
+}
+.cell-card:hover { border-color: #2e7d52; color: #1b5e3b; background: #f0faf4; }
+.cell-radio:checked + .cell-card { border-color: #2e7d52; background: #e8f5ee; color: #1b5e3b; font-weight: 700; }
+
+/* Textarea hint */
+.field-hint { font-size: 12px; color: #aaa; margin-top: 5px; }
+
+/* Buttons */
+.btn-row { display: flex; gap: 10px; margin-top: 24px; }
+.btn-next, .btn-submit {
+  flex: 1; padding: 13px; background: #2e7d52; color: #fff;
+  border: none; border-radius: 8px; font-family: 'Tajawal', sans-serif;
+  font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+}
+.btn-next:hover, .btn-submit:hover { background: #1b5e3b; transform: translateY(-1px); }
+.btn-back {
+  flex: 1; padding: 13px; background: #fff; color: #666;
+  border: 1.5px solid #e0e0e0; border-radius: 8px;
+  font-family: 'Tajawal', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-back:hover { background: #f5f5f5; }
+
+.section { display: none; }
+.section.active { display: block; }
+
+/* Optional badge */
+.opt-badge { font-size: 11px; color: #aaa; font-weight: 400; background: #f0f0f0; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+
+/* Success */
+.success {
+  display: none; background: #fff; border-radius: 12px;
+  padding: 52px 20px; text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.success-icon { font-size: 64px; margin-bottom: 16px; }
+.success h2 { font-size: 22px; font-weight: 800; color: #2e7d52; margin-bottom: 10px; }
+.success p { font-size: 14px; color: #888; line-height: 1.8; }
+
+.footer { text-align: center; margin-top: 24px; font-size: 12px; color: #bbb; }
+
+@media (max-width: 380px) { .cells-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="header-badge">2026</div>
+  <h1>أنفاش ن آت يسجن</h1>
+  <p>التنسيقية اليسجنية بالعاصمة</p>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress" id="progress">
+    <div class="p-dot active" id="dot-1">1</div><div class="p-line" id="line-1"></div>
+    <div class="p-dot" id="dot-2">2</div><div class="p-line" id="line-2"></div>
+    <div class="p-dot" id="dot-3">3</div><div class="p-line" id="line-3"></div>
+    <div class="p-dot" id="dot-4">4</div><div class="p-line" id="line-4"></div>
+    <div class="p-dot" id="dot-5">5</div><div class="p-line" id="line-5"></div>
+    <div class="p-dot" id="dot-6">6</div>
+  </div>
+  <div class="step-labels">
+    <span class="step-label active" id="lbl-1">البداية</span>
+    <span class="step-label" id="lbl-2">الفعالية</span>
+    <span class="step-label" id="lbl-3">التنظيم</span>
+    <span class="step-label" id="lbl-4">التطوع</span>
+    <span class="step-label" id="lbl-5">اقتراحاتك</span>
+    <span class="step-label" id="lbl-6">الانضمام</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- S1: Welcome -->
+  <div class="section active" id="s1">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">مرحباً بك</div>
+        <div class="card-title">رأيك يهمنا</div>
+        <div class="card-desc">نسعد بمشاركتك في هذا الاستبيان الذي يساعدنا على تطوير فعالية أنفاش ن آت يسجن. يستغرق ملؤه بضع دقائق فقط.</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">الجنس <span class="req">*</span></span>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="gender" value="ذكر" required><div class="r-circle"></div><span>ذكر</span></label>
+          <label class="radio-opt"><input type="radio" name="gender" value="أنثى"><div class="r-circle"></div><span>أنثى</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">الفئة العمرية <span class="req">*</span></span>
+        <select required>
+          <option value="">اختر فئتك</option>
+          <option>أقل من 18 سنة</option>
+          <option>18 — 25 سنة</option>
+          <option>26 — 35 سنة</option>
+          <option>36 — 50 سنة</option>
+          <option>أكثر من 50 سنة</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="field-label">هل سبق لك المشاركة في أنفاش من قبل؟ <span class="req">*</span></span>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="prev" value="نعم" required><div class="r-circle"></div><span>نعم، هذه ليست المرة الأولى</span></label>
+          <label class="radio-opt"><input type="radio" name="prev" value="لا"><div class="r-circle"></div><span>لا، هذه أول مشاركة لي</span></label>
+        </div>
+      </div>
+
+      <div class="btn-row"><button class="btn-next" onclick="goTo(2)">التالي ←</button></div>
+    </div>
+  </div>
+
+  <!-- S2: تقييم الفعالية -->
+  <div class="section" id="s2">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">الخطوة 2 من 6</div>
+        <div class="card-title">تقييم الفعالية</div>
+        <div class="card-desc">قيّم مختلف محاور أنفاش ن آت يسجن من 1 إلى 5 نجوم</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">تقييم البرامج والأنشطة</span>
+        <div class="stars-wrap">
+          <div class="star-row">
+            <div class="star-question">الندوات والمحاضرات</div>
+            <div class="stars">
+              <input type="radio" name="r1" id="r1-5" value="5"><label for="r1-5">★</label>
+              <input type="radio" name="r1" id="r1-4" value="4"><label for="r1-4">★</label>
+              <input type="radio" name="r1" id="r1-3" value="3"><label for="r1-3">★</label>
+              <input type="radio" name="r1" id="r1-2" value="2"><label for="r1-2">★</label>
+              <input type="radio" name="r1" id="r1-1" value="1"><label for="r1-1">★</label>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="star-question">البرامج الترفيهية والثقافية</div>
+            <div class="stars">
+              <input type="radio" name="r2" id="r2-5" value="5"><label for="r2-5">★</label>
+              <input type="radio" name="r2" id="r2-4" value="4"><label for="r2-4">★</label>
+              <input type="radio" name="r2" id="r2-3" value="3"><label for="r2-3">★</label>
+              <input type="radio" name="r2" id="r2-2" value="2"><label for="r2-2">★</label>
+              <input type="radio" name="r2" id="r2-1" value="1"><label for="r2-1">★</label>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="star-question">برنامج الأطفال</div>
+            <div class="stars">
+              <input type="radio" name="r3" id="r3-5" value="5"><label for="r3-5">★</label>
+              <input type="radio" name="r3" id="r3-4" value="4"><label for="r3-4">★</label>
+              <input type="radio" name="r3" id="r3-3" value="3"><label for="r3-3">★</label>
+              <input type="radio" name="r3" id="r3-2" value="2"><label for="r3-2">★</label>
+              <input type="radio" name="r3" id="r3-1" value="1"><label for="r3-1">★</label>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="star-question">برنامج الشباب</div>
+            <div class="stars">
+              <input type="radio" name="r4" id="r4-5" value="5"><label for="r4-5">★</label>
+              <input type="radio" name="r4" id="r4-4" value="4"><label for="r4-4">★</label>
+              <input type="radio" name="r4" id="r4-3" value="3"><label for="r4-3">★</label>
+              <input type="radio" name="r4" id="r4-2" value="2"><label for="r4-2">★</label>
+              <input type="radio" name="r4" id="r4-1" value="1"><label for="r4-1">★</label>
+            </div>
+          </div>
+          <div class="star-row">
+            <div class="star-question">الخدمات المقدمة (استقبال، إطعام، نظافة...)</div>
+            <div class="stars">
+              <input type="radio" name="r5" id="r5-5" value="5"><label for="r5-5">★</label>
+              <input type="radio" name="r5" id="r5-4" value="4"><label for="r5-4">★</label>
+              <input type="radio" name="r5" id="r5-3" value="3"><label for="r5-3">★</label>
+              <input type="radio" name="r5" id="r5-2" value="2"><label for="r5-2">★</label>
+              <input type="radio" name="r5" id="r5-1" value="1"><label for="r5-1">★</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما هي المواضيع التي تودّ أن تتناولها الفعاليات القادمة؟</span>
+        <div class="check-group">
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>اجتماعية وأسرية</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>تربوية وتعليمية</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>اقتصادية ومهنية</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>ثقافية وهوية أمازيغية</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>صحية ورياضية</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>بيئية</span></label>
+        </div>
+        <div style="margin-top:10px"><input type="text" placeholder="مواضيع أخرى تقترحها..."></div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما الذي أعجبك أكثر في هذه الدورة؟</span>
+        <textarea placeholder="شاركنا أكثر لحظاتك تميزاً..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-next" onclick="goTo(3)">التالي ←</button>
+        <button class="btn-back" onclick="goTo(1)">→ رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3: التنظيم والمكتب -->
+  <div class="section" id="s3">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">الخطوة 3 من 6</div>
+        <div class="card-title">التنظيم والمكتب</div>
+        <div class="card-desc">ساعدنا على تحسين عمل المكتب ولجانه</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">كيف تقيّم مستوى التنظيم العام للفعالية؟</span>
+        <select>
+          <option value="">اختر تقييمك</option>
+          <option>ممتاز — لم يكن هناك ما يُلاحَظ</option>
+          <option>جيد جداً — مع ملاحظات بسيطة</option>
+          <option>جيد — يمكن تحسينه</option>
+          <option>مقبول — يحتاج إلى مراجعة</option>
+          <option>ضعيف — كانت هناك إشكاليات</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="field-label">هل تتابع نشاطات التنسيقية عبر منصات التواصل؟</span>
+        <div class="check-group">
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>Facebook</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>WhatsApp</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>Telegram</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>Instagram</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>لا أتابع عبر أي منصة</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما الجوانب التي تراها تحتاج إلى اهتمام أكبر على المدى القريب؟</span>
+        <div class="multi-input">
+          <input type="text" placeholder="الجانب الأول">
+          <input type="text" placeholder="الجانب الثاني">
+          <input type="text" placeholder="الجانب الثالث">
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما المشاريع التي تودّ أن يُولِيها المكتب أولوية مستقبلاً؟</span>
+        <div class="multi-input">
+          <input type="text" placeholder="المشروع الأول">
+          <input type="text" placeholder="المشروع الثاني">
+          <input type="text" placeholder="المشروع الثالث">
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-next" onclick="goTo(4)">التالي ←</button>
+        <button class="btn-back" onclick="goTo(2)">→ رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4: التطوع -->
+  <div class="section" id="s4">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">الخطوة 4 من 6</div>
+        <div class="card-title">مساهمتك ودعمك</div>
+        <div class="card-desc">كل يد تساعد تجعل الفعالية أجمل</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">هل أنت مستعد للمشاركة في تنظيم الدورة القادمة؟</span>
+        <div class="radio-group">
+          <label class="radio-opt"><input type="radio" name="volunteer" value="نعم بكل سرور"><div class="r-circle"></div><span>نعم، بكل سرور</span></label>
+          <label class="radio-opt"><input type="radio" name="volunteer" value="ربما"><div class="r-circle"></div><span>ربما، حسب الظروف</span></label>
+          <label class="radio-opt"><input type="radio" name="volunteer" value="لا"><div class="r-circle"></div><span>لا، شكراً</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">في أي مجال تستطيع المساهمة؟</span>
+        <div class="check-group">
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>التنظيم والاستقبال</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>الطبخ والخدمات</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>الإعلام والتصوير</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>الدعم المالي / التبرعات</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>الإشراف والتنسيق</span></label>
+          <label class="check-opt"><input type="checkbox"><div class="c-box"></div><span>برامج الأطفال والشباب</span></label>
+        </div>
+        <div style="margin-top:10px"><input type="text" placeholder="مجالات أخرى..."></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-next" onclick="goTo(5)">التالي ←</button>
+        <button class="btn-back" onclick="goTo(3)">→ رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5: اقتراحاتك -->
+  <div class="section" id="s5">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">الخطوة 5 من 6</div>
+        <div class="card-title">اقتراحاتك وملاحظاتك</div>
+        <div class="card-desc">رأيك الصريح هو أفضل هدية تقدمها لنا</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما الذي تودّ الإبقاء عليه في الدورات القادمة؟</span>
+        <textarea placeholder="البرامج والعناصر التي أضافت قيمة..."></textarea>
+      </div>
+
+      <div class="field">
+        <span class="field-label">ما الذي تقترح تغييره أو تحسينه؟</span>
+        <textarea placeholder="ملاحظاتك الصريحة تساعدنا على التطوير..."></textarea>
+      </div>
+
+      <div class="field">
+        <span class="field-label">هل لديك أي طلبات أو احتياجات خاصة؟ <span class="opt-badge">اختياري</span></span>
+        <textarea placeholder="خدمات أو تسهيلات تودّ توفرها..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-next" onclick="goTo(6)">التالي ←</button>
+        <button class="btn-back" onclick="goTo(4)">→ رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- S6: الانضمام -->
+  <div class="section" id="s6">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-step">الخطوة 6 من 6</div>
+        <div class="card-title">انضم إلينا <span class="opt-badge">اختياري</span></div>
+        <div class="card-desc">إذا كنت ترغب في الانضمام إلى إحدى خلايا أو مكاتب التنسيقية، أكمل هذه الخطوة. يمكنك تخطيها والإرسال مباشرة.</div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">الاسم الكامل</span>
+        <input type="text" placeholder="أدخل اسمك الكامل">
+      </div>
+
+      <div class="field">
+        <span class="field-label">رقم الهاتف</span>
+        <input type="text" placeholder="0X XX XX XX XX">
+      </div>
+
+      <div class="field">
+        <span class="field-label">اختر الخلية أو المكتب الذي تودّ الانضمام إليه</span>
+
+        <div class="section-divider">المكاتب</div>
+        <div class="cells-grid">
+          <input type="radio" name="cell" id="b1" class="cell-radio"><label for="b1" class="cell-card">مكتب مقاطعة الجزائر وسط</label>
+          <input type="radio" name="cell" id="b2" class="cell-radio"><label for="b2" class="cell-card">مكتب مقاطعة بلكور</label>
+          <input type="radio" name="cell" id="b3" class="cell-radio"><label for="b3" class="cell-card">مكتب مقاطعة الحميز</label>
+          <input type="radio" name="cell" id="b4" class="cell-radio"><label for="b4" class="cell-card">مكتب مقاطعة الحراش</label>
+          <input type="radio" name="cell" id="b5" class="cell-radio"><label for="b5" class="cell-card">مكتب مقاطعة بن رضوان</label>
+        </div>
+
+        <div class="section-divider">الخلايا</div>
+        <div class="cells-grid">
+          <input type="radio" name="cell" id="c1" class="cell-radio"><label for="c1" class="cell-card">خلية أحباب المرضى</label>
+          <input type="radio" name="cell" id="c2" class="cell-radio"><label for="c2" class="cell-card">خلية إثران</label>
+          <input type="radio" name="cell" id="c3" class="cell-radio"><label for="c3" class="cell-card">خلية إمكراس و إمدوتشال</label>
+          <input type="radio" name="cell" id="c4" class="cell-radio"><label for="c4" class="cell-card">خلية فتية</label>
+          <input type="radio" name="cell" id="c5" class="cell-radio"><label for="c5" class="cell-card">خلية النبات الحسن</label>
+          <input type="radio" name="cell" id="c6" class="cell-radio"><label for="c6" class="cell-card">خلية التطوع</label>
+          <input type="radio" name="cell" id="c7" class="cell-radio"><label for="c7" class="cell-card">خلية الطبخ</label>
+          <input type="radio" name="cell" id="c8" class="cell-radio"><label for="c8" class="cell-card">خلية الإحصاء</label>
+          <input type="radio" name="cell" id="c9" class="cell-radio"><label for="c9" class="cell-card">خلية الإقتصاد</label>
+          <input type="radio" name="cell" id="c10" class="cell-radio"><label for="c10" class="cell-card">خلية الإعلام</label>
+          <input type="radio" name="cell" id="c11" class="cell-radio"><label for="c11" class="cell-card">خلية التبرعات</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">لماذا تريد الانضمام؟ <span class="opt-badge">اختياري</span></span>
+        <textarea placeholder="شاركنا دوافعك وما تريد تقديمه..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn-submit" onclick="submitForm()">إرسال ✓</button>
+        <button class="btn-back" onclick="goTo(5)">→ رجوع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div class="success" id="success">
+    <div class="success-icon">🌿</div>
+    <h2>شكراً على مشاركتك!</h2>
+    <p>تم استلام إجاباتك بنجاح.<br>رأيك يساهم في جعل أنفاش ن آت يسجن أفضل في كل دورة.<br><br>التنسيقية اليسجنية بالعاصمة</p>
+  </div>
+
+  <div class="footer">التنسيقية اليسجنية بالعاصمة — أنفاش ن آت يسجن 2026</div>
+</div>
+
+
+
+<script>
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbz3ukOMsiyGULKPT_zt3XX37sX5O2c5jkw1ANeBAo9w4FsTGerugIdfPllGK9JJ_6M/exec";
+
+function goTo(n) {
+  // Hide all sections
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  const sec = document.getElementById('s' + n);
+  if (sec) sec.classList.add('active');
+
+  // Update dots
+  for (let i = 1; i <= 6; i++) {
+    const d = document.getElementById('dot-' + i);
+    const l = document.getElementById('lbl-' + i);
+    if (!d) continue;
+    d.classList.remove('active', 'done');
+    if (l) l.classList.remove('active');
+    if (i < n) d.classList.add('done');
+    if (i === n) { d.classList.add('active'); if (l) l.classList.add('active'); }
+  }
+  // Update lines
+  for (let i = 1; i <= 5; i++) {
+    const line = document.getElementById('line-' + i);
+    if (line) line.classList.toggle('done', i < n);
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function collectData() {
+  const getRadio = (name) => {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  };
+  const getCheckboxLabels = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return '';
+    return [...section.querySelectorAll('input[type="checkbox"]:checked')]
+      .map(e => { const opt = e.closest('.check-opt'); return opt ? opt.querySelector('span')?.textContent.trim() : ''; })
+      .filter(Boolean).join(', ');
+  };
+  const getInputs = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return '';
+    return [...section.querySelectorAll('input[type="text"]')]
+      .map(e => e.value.trim()).filter(Boolean).join(' | ');
+  };
+  const getTextarea = (sectionId, index) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return '';
+    const tas = section.querySelectorAll('textarea');
+    return tas[index] ? tas[index].value.trim() : '';
+  };
+  const getSelect = (sectionId, index) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return '';
+    const sels = section.querySelectorAll('select');
+    return sels[index] ? sels[index].value : '';
+  };
+
+  return {
+    gender: getRadio('gender'),
+    age: getSelect('s1', 0),
+    prev: getRadio('prev'),
+    r1: getRadio('r1'), r2: getRadio('r2'), r3: getRadio('r3'),
+    r4: getRadio('r4'), r5: getRadio('r5'),
+    topics: getCheckboxLabels('s2'),
+    liked: getTextarea('s2', 0),
+    org_rating: getSelect('s3', 0),
+    social: getCheckboxLabels('s3'),
+    short_term: getInputs('s3').split(' | ').slice(0,3).join(' | '),
+    long_term: getInputs('s3').split(' | ').slice(3).join(' | '),
+    volunteer: getRadio('volunteer'),
+    contrib: getCheckboxLabels('s4'),
+    keep: getTextarea('s5', 0),
+    improve: getTextarea('s5', 1),
+    needs: getTextarea('s5', 2),
+    name: (() => { const s=document.getElementById('s6'); return s?s.querySelectorAll('input[type="text"]')[0]?.value||'':''; })(),
+    phone: (() => { const s=document.getElementById('s6'); return s?s.querySelectorAll('input[type="text"]')[1]?.value||'':''; })(),
+    cell: getRadio('cell'),
+    motivation: getTextarea('s6', 0)
+  };
+}
+
+async function submitForm() {
+  const data = collectData();
+
+  // Show success
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  document.querySelector('.progress-wrap').style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Send to sheet
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch(e) { console.error('Submit error:', e); }
+}
+</script>
+
+</body>
+</html>
